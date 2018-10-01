@@ -1,20 +1,21 @@
 //Global variables
 var boids = [];
-var yellowTriangle;
+var yellowBall;
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   loadBoids(55);
-  
+  loadBall();
+
 }
 function draw() {
   background(20, 20, 20);
   for (var i = 0; i < boids.length; i++){
   boids[i].run();
   }
-  yellowTriangle.run();
+  yellowBall.run();
 }
 
 function loadBoids(numBoids) {
@@ -24,9 +25,13 @@ function loadBoids(numBoids) {
 		var col = color(100, 100, 100);
 		boids.push(new Boids(location, velocity, col));
 	}
-var location = createVector(width/2, height/2);
-var velocity = createVector(0,0);
-var col = color(255, 255 ,0);
-yellowTriangle = new Boids(location, velocity, col);
 console.log(boids.length);
+}
+
+function loadBall(){
+  var location = createVector(width/2, height/2);
+  var velocity = createVector(0,0);
+  var col = color(255, 255 ,0);
+  var rad = 20;
+  yellowBall.push(new Ball(location, velocity, col, rad));
 }

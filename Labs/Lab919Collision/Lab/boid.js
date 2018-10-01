@@ -17,25 +17,11 @@ function Boids(location, velocity, col){
   }
   // This function changes the location of the ball
   // by adding speed to x and y
-  this.update = function(){ 
-	  if (this != yellowTriangle){
+  this.update = function(){
 		this.loc.x = this.loc.x + this.vel.x;
 		this.loc.y = this.loc.y + this.vel.y;
-		var dist = this.loc.dist(yellowTriangle.loc);
-	  }
-	  else{
-		var mouseLoc = createVector(mouseX, mouseY);
-		this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09)
-	  }
-	  for (var i = 0; i < boids.length; i++){
-		var dist = boids[i].loc.dist(yellowTriangle.loc);
-		if (dist < 20){
-			boids.splice(i, 1)
-			console.log(boids.length);
 		}
-	  }
-     }
-  //checkEdges() reverses speed when the ball touches an edge
+	    //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
@@ -48,12 +34,7 @@ function Boids(location, velocity, col){
 	push(); // push or save the current coord system into the stack
 		translate(this.loc.x, this.loc.y);
 		rotate(0);
-		if (this != yellowTriangle){
 			triangle(-5, 0, 5, 0, 0, -15);
-		}
-		else{
-			triangle(-20, 0, 20, 0, 0, -60);
-		}
 	pop();
 	}
 }
