@@ -12,10 +12,10 @@ function setup() {
 }
 function draw() {
   background(20, 20, 20);
+  yellowBall.run();
   for (var i = 0; i < boids.length; i++){
   boids[i].run();
   }
-  yellowBall.run();
 }
 
 function loadBoids(numBoids) {
@@ -32,6 +32,6 @@ function loadBall(){
   var location = createVector(width/2, height/2);
   var velocity = createVector(0,0);
   var col = color(255, 255 ,0);
-  var rad = 20;
-  yellowBall.push(new Ball(location, velocity, col, rad));
+  var rad = 40;
+  yellowBall = new Ball(location, velocity, col, rad);
 }
