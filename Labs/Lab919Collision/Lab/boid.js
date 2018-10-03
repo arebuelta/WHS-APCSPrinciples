@@ -18,25 +18,23 @@ function Boids(location, velocity, col){
   // This function changes the location of the ball
   // by adding speed to x and y
   this.update = function(){
+    this.loc.add(this.vel);
     for (var i = 0; i < boids.length; i++){
     var dist = boids[i].loc.dist(yellowBall.loc);
-    if (dist < 20){
-      var steeringForce = p5.Vector.sub(boids[i].loc, yellowBall.loc);
+    if (dist < 50){
+      var steeringForce = p5.Vector.sub(this.loc, yellowBall.loc);
       steeringForce.normalize();
       steeringForce.mult(0.5);
-      this.vel.add(steeringForce);
-      this.loc.add(this.vel);
+      boids[i].vel.limit(2);
+      boids[i].vel.add(steeringForce);
+      boids[i].loc.add(boids[i].vel);
+      if (dist < 20){
+        boids.splice(i, 1)
+        console.log(boids.length);
+      }
     }
     else {
-      this.loc.x = this.loc.x + this.vel.x;
-      this.loc.y = this.loc.y + this.vel.y;
-    }
-  }
-    for (var i = 0; i < boids.length; i++){
-    var dist = boids[i].loc.dist(yellowBall.loc);
-    if (dist < 20){
-      boids.splice(i, 1)
-      console.log(boids.length);
+      this.loc.add(this.vel);
     }
 		}
   }
