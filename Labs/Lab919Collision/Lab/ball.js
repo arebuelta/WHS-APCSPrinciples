@@ -1,3 +1,9 @@
+/*
+** Ball Function
+** Anthony Rebuelta
+** October 4, 2018
+*/
+
 function Ball(location, velocity, col, rad){
   // Instance variables
   this.loc = location;
@@ -9,8 +15,7 @@ function Ball(location, velocity, col, rad){
     this.update();
     this.render();
   }
-  // This function changes the location of the ball
-  // by adding speed to x and y
+  // This function changes the location of the ball by making it follow the mouse
   this.update = function(){
     var mouseLoc = createVector(mouseX, mouseY);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09)

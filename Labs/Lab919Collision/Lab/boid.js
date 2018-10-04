@@ -1,7 +1,7 @@
 /*
-**  Ball Constructor Function
+** Boids Function
 ** Anthony Rebuelta
-** September 4, 2018
+** October 4, 2018
 */
 
 function Boids(location, velocity, col){
@@ -15,27 +15,18 @@ function Boids(location, velocity, col){
     this.update();
     this.render();
   }
-  // This function changes the location of the ball
-  // by adding speed to x and y
+  // This function changes the location of the boids
+  // by adding speed to location and velocity
   this.update = function(){
     this.loc.add(this.vel);
+    // For loop that checks each boids location
     for (var i = 0; i < boids.length; i++){
     var dist = boids[i].loc.dist(yellowBall.loc);
-    if (dist < 50){
-      var steeringForce = p5.Vector.sub(this.loc, yellowBall.loc);
-      steeringForce.normalize();
-      steeringForce.mult(0.5);
-      boids[i].vel.limit(2);
-      boids[i].vel.add(steeringForce);
-      boids[i].loc.add(boids[i].vel);
+    // Splices boid if its 20 pixels near the yellow ball
       if (dist < 20){
         boids.splice(i, 1)
         console.log(boids.length);
       }
-    }
-    else {
-      this.loc.add(this.vel);
-    }
 		}
   }
 	    //checkEdges() reverses speed when the ball touches an edge
