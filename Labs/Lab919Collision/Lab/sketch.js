@@ -43,6 +43,6 @@ function loadBall(){
   var velocity = createVector(0,0);
   var col = color(255, 255 ,0);
   var rad = 40;
-  // sends yellowBall to the ball function
+  // sends yellowBall to the ball function and defines it
   yellowBall = new Ball(location, velocity, col, rad);
 }
