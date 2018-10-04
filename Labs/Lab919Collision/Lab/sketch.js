@@ -15,7 +15,7 @@ function setup() {
   loadBoids(55);
   loadBall();
 
-}]
+}
 // draw function that runs objects
 function draw() {
   background(20, 20, 20);
