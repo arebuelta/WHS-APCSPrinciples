@@ -22,6 +22,15 @@ function Ball(location, velocity, col, rad){
   this.update = function(){
     this.vel.add(this.acc);
     this.loc.add(this.vel);
+    for (var i = 0; i < balls.length; i++){
+        if (balls[i].vel.y > 0){
+          var dist = balls[i].loc.dist(redRect.loc);
+          if (dist < 20){
+            balls.splice(i, 1);
+            console.log(balls.length);
+          }
+        }
+    }
   }
 	    //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){

@@ -21,7 +21,7 @@ function Rect(location, velocity, col){
     var mouseLoc = createVector(mouseX, 0);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09)
   }
-	    //checkEdges() reverses speed when the ball touches an edge
+	//checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
