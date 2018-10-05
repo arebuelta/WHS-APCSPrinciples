@@ -12,8 +12,8 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadBalls(55);
-  loadBall();
+  loadBalls(20);
+  loadRect();
 
 }
 // draw function that runs objects
@@ -30,10 +30,10 @@ function loadBalls(numBalls) {
 	for (var i = 0; i < numBalls; i++){
 		var location = createVector(random(width), random(height));
 		var velocity = createVector(random(-3, 3), random(-3, 3));
-		var col = color(100, 100, 100);
-    var rad = 20;
+		var col = color(255, 255, 255);
+		var rad = 20;
     // Pushes balls to the Ball function
-		balls.push(new Ball(location, velocity, rad, col));
+		balls.push(new Ball(location, velocity, col, rad));
 	}
 }
 

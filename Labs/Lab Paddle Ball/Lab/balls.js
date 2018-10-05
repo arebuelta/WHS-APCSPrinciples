@@ -4,11 +4,12 @@
 ** October 4, 2018
 */
 
-function Boids(location, velocity, col){
+function Ball(location, velocity, col, rad){
   // Instance variables
   this.loc = location;
   this.vel = velocity;
   this.col = col;
+  this.rad = rad;
   this.acc = createVector(0, .1);
   // This function calls other functions
   this.run = function (){
@@ -32,10 +33,6 @@ function Boids(location, velocity, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-	  push(); // push or save the current coord system into the stack
-		translate(this.loc.x, this.loc.y);
-		rotate(0);
-			triangle(-5, 0, 5, 0, 0, -15);
-	pop();
+	ellipse(this.loc.x, this.loc.y, rad, rad);
 	}
 }

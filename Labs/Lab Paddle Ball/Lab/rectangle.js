@@ -31,6 +31,6 @@ function Rect(location, velocity, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-		rect(0, 0, 50, 20);
+		rect(this.loc.x, 550, 150, 20);
 	}
 }
