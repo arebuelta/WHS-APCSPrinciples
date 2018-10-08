@@ -12,7 +12,8 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadBalls(20);
+  b = 20;
+  loadBalls(b);
   loadRect();
 
 }
@@ -28,8 +29,8 @@ function draw() {
   // function that loads balls, giving them their locations, velocity, and color
 function loadBalls(numBalls) {
 	for (var i = 0; i < numBalls; i++){
-		var location = createVector(random(width), random(height));
-		var velocity = createVector(random(-3, 3), random(-3, 3));
+		var location = createVector(random(width), random(0, 200));
+		var velocity = createVector(random(-3, 3), -2);
 		var col = color(255, 255, 255);
 		var rad = 20;
     // Pushes balls to the Ball function
@@ -39,9 +40,8 @@ function loadBalls(numBalls) {
 
   // function that gives the red rectangle its location, velocity, and color
 function loadRect(){
-  var location = createVector(width/2, height/2);
   var velocity = createVector(0,0);
   var col = color(255, 255 ,0);
   // sends  to the ball function and defines it
-  redRect = new Rect(location, velocity, col);
+  redRect = new Rect(velocity, col);
 }
