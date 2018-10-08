@@ -23,12 +23,13 @@ function Ball(location, velocity, col, rad){
     this.vel.add(this.acc);
     this.loc.add(this.vel);
     for (var i = 0; i < balls.length; i++){
+		var m = 150+(100*a)
 		if (balls[i].loc.y > 820){
 			balls[i].loc.y = 0;
 			balls[i].vel.y = -2;
 		}
 		// p1 = coordinates of the top left corner of paddle
-		var p1 = createVector(redRect.loc.x-75, redRect.loc.y); 
+		var p1 = createVector(redRect.loc.x-(m/2), redRect.loc.y); 
 		// x1 gets the x-distance between the ball and p1
 		var x1 = balls[i].loc.x-p1.x;
 		// dist1 gets the distance between the ball and p1
@@ -37,7 +38,7 @@ function Ball(location, velocity, col, rad){
 		var height = Math.sqrt((dist1*dist1)-(x1*x1));
 		if (balls[i].vel.y > 0){
 			if (x1 > 0){
-				if (x1 < 150){
+				if (x1 < m){
 					if (height < 5) balls[i].vel.y = -balls[i].vel.y;	
 				}
 			}
@@ -48,7 +49,7 @@ function Ball(location, velocity, col, rad){
 			var x2 = balls[i].loc.x-p2.x;
 			var height2 = Math.sqrt((dist2*dist2)-(x2*x2));
 			if (x2 > 0){
-				if (x2 < 150){
+				if (x2 < m){
 					if (height2 < 5){
 						balls.splice(i, 1);
 						console.log(balls.length);

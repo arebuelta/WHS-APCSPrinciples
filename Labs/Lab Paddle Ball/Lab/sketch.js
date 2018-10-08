@@ -7,12 +7,14 @@
 //Global variables
 var balls = [];
 var redRect;
+var a = 0;
+var w = 150;
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  b = 20;
+  b = 20*(1+a);
   loadBalls(b);
   loadRect();
 
@@ -24,6 +26,10 @@ function draw() {
   // for loop used to run every single ball in the array
   for (var i = 0; i < balls.length; i++){
   balls[i].run();
+  }
+  if (balls.length === 0){
+	  a = a+1;
+	  setup();
   }
 }
   // function that loads balls, giving them their locations, velocity, and color
