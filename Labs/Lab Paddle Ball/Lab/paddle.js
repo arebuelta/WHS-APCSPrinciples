@@ -4,7 +4,7 @@
 ** October 4, 2018
 */
 
-function Rect(velocity, col){
+function Paddle(velocity, col){
   // Instance variables
   this.loc = createVector(mouseX, 550);
   this.vel = velocity;

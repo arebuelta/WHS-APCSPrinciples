@@ -6,7 +6,7 @@
 
 //Global variables
 var balls = [];
-var redRect;
+var paddle;
 var a = 0;
 var w = 150;
 // setup code
@@ -16,13 +16,13 @@ function setup() {
   background(20, 20, 20);
   b = 20*(1+a);
   loadBalls(b);
-  loadRect();
+  loadPaddle();
 
 }
 // draw function that runs objects
 function draw() {
   background(20, 20, 20);
-  redRect.run();
+  paddle.run();
   // for loop used to run every single ball in the array
   for (var i = 0; i < balls.length; i++){
   balls[i].run();
@@ -45,9 +45,9 @@ function loadBalls(numBalls) {
 }
 
   // function that gives the red rectangle its location, velocity, and color
-function loadRect(){
+function loadPaddle(){
   var velocity = createVector(0,0);
   var col = color(255, 255 ,0);
   // sends  to the ball function and defines it
-  redRect = new Rect(velocity, col);
+  paddle = new Paddle(velocity, col);
 }
