@@ -8,6 +8,7 @@
 var balls = [];
 var paddle;
 var a = 0;
+var c = 0;
 var w = 150;
 // setup code
 function setup() {
@@ -21,8 +22,12 @@ function setup() {
 }
 // draw function that runs objects
 function draw() {
+  fill (255, 255, 255)
   background(20, 20, 20);
   paddle.run();
+  textSize(25);
+  fill (255, 255, 255);
+  text("Score", 50 , 50);
   // for loop used to run every single ball in the array
   for (var i = 0; i < balls.length; i++){
   balls[i].run();

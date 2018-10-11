@@ -56,11 +56,11 @@ function Ball(location, velocity, col, rad){
             balls.splice(i, 1);
             console.log(balls.length);
         }
-    /* Resets game if the ball's x distance is between 0 and the paddle's width,
+    /* Resets game by splicing all balls if the ball's x distance is between 0 and the paddle's width,
     ** their velocity is positive, and their height is less than 5 pixels from the bottom of the paddle
     */
     else if (balls[i].vel.y < 0 && x2 > 0 && x2 < m && height2 < 5) {
-            balls[i].vel.y = -balls[i].vel.y;
+            balls.length = 0;
           }
         }
       }
