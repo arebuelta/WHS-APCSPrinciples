@@ -27,7 +27,8 @@ function draw() {
   paddle.run();
   textSize(25);
   fill (255, 255, 255);
-  text("Score", 50 , 50);
+  text("Score:", 50 , 50);
+  text(c, 140, 50);
   // for loop used to run every single ball in the array
   for (var i = 0; i < balls.length; i++){
   balls[i].run();
