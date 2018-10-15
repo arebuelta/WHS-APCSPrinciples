@@ -50,16 +50,16 @@ function Ball(location, velocity, col, rad){
     // height2 = the height of the ball from the bottom of paddle
     var height2 = Math.sqrt((dist2*dist2)-(x2*x2));
     /* Splices balls if their x distance is between 0 and the paddle's width,
-    ** their velocity is positive, and their height is less than 5 pixels from the top of the paddle
+    ** their velocity is positive, and their height is less than 10 pixels from the top of the paddle
     */
-    if (balls[i].vel.y > 0 && x1 > 0 && x1 < m && height < 5){
+    if (balls[i].vel.y > 0 && x1 > 0 && x1 < m && height < 10){
             balls.splice(i, 1);
             c = c+1;
         }
     /* Resets game by splicing all balls if the ball's x distance is between 0 and the paddle's width,
-    ** their velocity is positive, and their height is less than 5 pixels from the bottom of the paddle
+    ** their velocity is positive, and their height is less than 10 pixels from the bottom of the paddle
     */
-    else if (balls[i].vel.y < 0 && x2 > 0 && x2 < m && height2 < 5) {
+    else if (balls[i].vel.y < 0 && x2 > 0 && x2 < m && height2 < 10) {
             balls.length = 0;
           }
         }
