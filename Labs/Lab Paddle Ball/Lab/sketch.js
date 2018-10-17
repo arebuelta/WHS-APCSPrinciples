@@ -10,6 +10,8 @@ var paddle;
 var a = 0; // Variable used to increase paddle size and number of balls
 var c = 0; // Variable that is used to get the score of spliced balls
 var w = 150; // Original width of paddle
+var b;
+var end;
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -18,7 +20,6 @@ function setup() {
   b = 20*(1+a);
   loadBalls(b);
   loadPaddle();
-
 }
 // draw function that runs objects
 function draw() {
@@ -33,20 +34,9 @@ function draw() {
   for (var i = 0; i < balls.length; i++){
   balls[i].run();
   }
-  if (balls.length === 0){
-	  // Ends game once the round is over and the score is over 1000
-	  if (c > 1000){
-		  w = 0;
-		  a = 0;
-		  textSize(40);
-		  fill(255, 255, 255);
-		  text("You won!", 300, 400);
-	  }
-	  // Restarts game once round is over and score is under 0, with an increase in variable a
-	  else {
-	  a = a+1;
-	  setup();
-	  }
+  if (end === "done"){
+    fill (255, 255, 255);
+    text("congrats", 400, 400);
   }
 }
   // function that loads balls, giving them their locations, velocity, and color

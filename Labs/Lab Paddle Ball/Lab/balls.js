@@ -55,12 +55,18 @@ function Ball(location, velocity, col, rad){
     if (balls[i].vel.y > 0 && x1 > 0 && x1 < m && height < 10){
             balls.splice(i, 1);
             c = c+1;
+            if (balls.length === 0){
+              end = "done";
+            }
         }
     /* Resets game by splicing all balls if the ball's x distance is between 0 and the paddle's width,
     ** their velocity is positive, and their height is less than 10 pixels from the bottom of the paddle
     */
     else if (balls[i].vel.y < 0 && x2 > 0 && x2 < m && height2 < 10) {
             balls.length = 0;
+            a = a+1;
+            b = 20*(1+a);
+            loadBalls(b);
           }
         }
       }
