@@ -23,6 +23,6 @@ function Paddle(velocity, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-		rect(this.loc.x-((w+(100*a))/2), this.loc.y, (w+(100*a)), 20);
+		rect(this.loc.x-(w/2), this.loc.y, w, 20);
 	}
 }

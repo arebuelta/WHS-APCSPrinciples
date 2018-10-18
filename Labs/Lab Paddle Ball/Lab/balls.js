@@ -27,7 +27,7 @@ function Ball(location, velocity, col, rad){
   // This function checks for collision and removes balls
   this.collision = function (){
     for (var i = 0; i < balls.length; i++){
-    var m = 150+(100*a)
+    var m = 250;
     // relocates balls if they go out of canvas
     if (balls[i].loc.y > 820){
       balls[i].loc.y = 0;
@@ -66,7 +66,9 @@ function Ball(location, velocity, col, rad){
             balls.length = 0;
             a = a+1;
             b = 20*(1+a);
-            loadBalls(b);
+            for (var i = 0; i < balls.length; i++){
+
+            }
           }
         }
       }

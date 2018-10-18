@@ -9,7 +9,7 @@ var balls = [];
 var paddle;
 var a = 0; // Variable used to increase paddle size and number of balls
 var c = 0; // Variable that is used to get the score of spliced balls
-var w = 150; // Original width of paddle
+var w = 250; // Original width of paddle
 var b;
 var end;
 // setup code
@@ -37,6 +37,12 @@ function draw() {
   if (end === "done"){
     fill (255, 255, 255);
     text("congrats", 400, 400);
+  }
+  else if (balls.length > 250){
+    fill (255, 255, 255);
+    text("You Lose", 400, 400);
+    freeze
+
   }
 }
   // function that loads balls, giving them their locations, velocity, and color
