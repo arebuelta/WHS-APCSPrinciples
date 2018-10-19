@@ -27,7 +27,7 @@ function Ball(location, velocity, col, rad){
   // This function checks for collision and removes balls
   this.collision = function (){
     for (var i = 0; i < balls.length; i++){
-    var m = 250;
+    var m = w;
     // relocates balls if they go out of canvas
     if (balls[i].loc.y > 820){
       balls[i].loc.y = 0;
@@ -59,16 +59,14 @@ function Ball(location, velocity, col, rad){
               end = "done";
             }
         }
-    /* Resets game by splicing all balls if the ball's x distance is between 0 and the paddle's width,
-    ** their velocity is positive, and their height is less than 10 pixels from the bottom of the paddle
+    /* Adds more balls if the ball's x distance is between 0 and the paddle's width,
+    ** their velocity is negative, and their height is less than 10 pixels from the bottom of the paddle
     */
     else if (balls[i].vel.y < 0 && x2 > 0 && x2 < m && height2 < 10) {
             balls.length = 0;
             a = a+1;
             b = 20*(1+a);
-            for (var i = 0; i < balls.length; i++){
-
-            }
+            loadBalls(b);
           }
         }
       }
