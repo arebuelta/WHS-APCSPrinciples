@@ -21,9 +21,6 @@ function setup() {
   b = 20*(1+a);
   loadBalls(b);
   loadPaddle();
-  button = createButton('test');
-  button.position(750, 750);
-  button.mousePressed(instructions);
 }
 // draw function that runs objects
 function draw() {
@@ -58,11 +55,6 @@ function draw() {
       balls[i].vel.y = 0;
     }
   }
-}
-function instructions(){
-  textSize(25);
-  fill (255, 255, 255);
-  text("Score:", 100 , 50);
 }
   // function that loads balls, giving them their locations, velocity, and color
 function loadBalls(numBalls) {
