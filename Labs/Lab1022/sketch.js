@@ -6,11 +6,13 @@
 
 // Global variables
 var txt1; // variable holding original set of words
-var txt2; // variable holding organized set of words
+var txt2; // variable holding organized set of words using bubble sort
+var txt3; // variable holding organized set of words using select sort
 // preload code that receives words from text file
 function preLoad(){
 	txt1 = loadStrings('words.txt');
 	txt2 = loadStrings('words.txt');
+	txt3 = loadStrings('words.txt');
 }
 // setup code
 function setup(){
@@ -18,6 +20,8 @@ function setup(){
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   preLoad(); // calls preLoad
+	selectSort();
+	console.log(txt3);
 }
 // draw function that runs objects
 function draw(){
@@ -49,4 +53,18 @@ function swap(txt2, a, b){
 	old = txt2[a];
 	txt2[a] = txt2[b]; // makes txt2[a] equal to txt2[b]
 	txt2[b] = old; // makes txt2[b] equal to variable old, which is the old value of txt2[a]
+}
+
+function selectSort(){
+	for (var j = 0; j < txt3.length-1; j++){
+		var iMin = j;
+		for (var i = j+1; i < txt3.length; i++){
+			if (txt3[i] < txt3[j]){
+				iMin = i;
+			}
+		}
+		if (iMin != j){
+			swap(txt3, txt[j], txt[iMin]);
+		}
+	}
 }
