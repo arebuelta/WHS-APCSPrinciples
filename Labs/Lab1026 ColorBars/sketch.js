@@ -8,12 +8,11 @@ function setup(){
 createCanvas()
 var cnv = createCanvas(800, 800);
 cnv.position((windowWidth-width)/2, 30);
+background(20, 20, 20);
 loadBars(255);
 }
 
 function draw(){
-fill (255, 255, 255)
-background(20, 20, 20);
 for (var i = 0; i < bars.length; i++){
   bars[i].run();
 }
@@ -28,12 +27,11 @@ function mySelectSort(){
 
 
 function loadBars(numBars){
-  var x = 0;
-  for (var i = 0; i < bars.length; i++){
+  for (var i = 0; i < numBars; i++){
     var h = 100;
-    var w = (255/bars.length);
-    var location = createVector((x+w), 50);
-    var color = color(random(255), random(255), random(255));
-    bars.push(new ColorBar(location, w, h, color));
+    var w = (800/numBars);
+    var loc = createVector((w*i), 100);
+    var col = color(random(255), random(255), random(255));
+    bars.push(new ColorBar(loc, w, h, col));
   }
 }

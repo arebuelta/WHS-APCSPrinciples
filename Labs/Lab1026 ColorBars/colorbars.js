@@ -3,16 +3,16 @@
 ** October 26, 2018
 */
 
-function ColorBar(location, w, h, color){
-  this.loc = location;
+function ColorBar(loc, w, h, col){
+  this.loc = loc;
   this.w = w;
   this.h = h;
-  this.col = color;
+  this.col = col;
   this.run = function (){
     this.render();
   }
   this.render = function(){
     fill(this.col);
-    rect(this.locX, this.locY, w, h);
+    rect(this.loc.x, this.loc.y, w, h);
   }
 }
