@@ -3,7 +3,6 @@
 ** October 26, 2018
 */
 var bars = [];
-var blueValue = [];
 var sortedBars = [];
 
 function setup(){
@@ -23,8 +22,14 @@ for (var i = 0; i < bars.length; i++){
 
 function myBubbleSort(){
   for (var i = bars.length-1; i >= 1; i--){
-    for (var j = 0; j < bars.length; i++){
-
+    for (var j = 0; j < bars.length; j++){
+      var x = [];
+      x = sortedBars[j+1].col;
+      if (blue(sortedBars[j].col) > blue(x)){
+      var temp = sortedBars[j];
+      sortedBars[j] = sortedBars[j+1];
+      sortedBars[j+1] = temp;
+    }
     }
   }
 }
@@ -40,7 +45,6 @@ function loadBars(numBars){
     var loc = createVector((w*i), 100);
     var col = color(random(255), random(255), random(255));
     bars.push(new ColorBar(loc, w, h, col));
-    blueValue[i] = blue(col);
   }
   sortedBars = bars;
 }
