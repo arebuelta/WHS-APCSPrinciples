@@ -4,13 +4,14 @@
 */
 var bars = [];
 var sortedBars = [];
+var clrBlue = [];
 
 function setup(){
-createCanvas()
 var cnv = createCanvas(800, 800);
 cnv.position((windowWidth-width)/2, 30);
 background(20, 20, 20);
 loadBars(255);
+getBlue();
 myBubbleSort();
 }
 
@@ -23,12 +24,12 @@ for (var i = 0; i < bars.length; i++){
 function myBubbleSort(){
   for (var i = bars.length-1; i >= 1; i--){
     for (var j = 0; j < bars.length; j++){
-      var x = [];
-      x = sortedBars[j+1].col;
-      if (blue(sortedBars[j].col) > blue(x)){
+      if (clrBlue[j] > clrBlue[j+1]){
       var temp = sortedBars[j];
       sortedBars[j] = sortedBars[j+1];
       sortedBars[j+1] = temp;
+      console.log('test');
+      getBlue();
     }
     }
   }
@@ -47,4 +48,10 @@ function loadBars(numBars){
     bars.push(new ColorBar(loc, w, h, col));
   }
   sortedBars = bars;
+}
+
+function getBlue(){
+  for (var i = 0; i < sortedBars.length; i++){
+    clrBlue[i] = blue(sortedBars[i].col);
+  }
 }
