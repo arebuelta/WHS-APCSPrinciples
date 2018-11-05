@@ -20,7 +20,6 @@ function setup(){
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   preLoad(); // calls preLoad
-	selectSort();
 	console.log(txt3);
 }
 // draw function that runs objects
@@ -53,18 +52,4 @@ function swap(txt2, a, b){
 	old = txt2[a];
 	txt2[a] = txt2[b]; // makes txt2[a] equal to txt2[b]
 	txt2[b] = old; // makes txt2[b] equal to variable old, which is the old value of txt2[a]
-}
-
-function selectSort(){
-	for (var j = 0; j < txt3.length-1; j++){
-		var iMin = j;
-		for (var i = j+1; i < txt3.length; i++){
-			if (txt3[i] < txt3[j]){
-				iMin = i;
-			}
-		}
-		if (iMin != j){
-			swap(txt3, txt[j], txt[iMin]);
-		}
-	}
 }
