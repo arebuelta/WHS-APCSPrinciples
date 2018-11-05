@@ -8,10 +8,9 @@ var data;
 var barHeight;
 // function preload that loads json file
 function preload(){
-	data = loadJSON('weather.json'); // data variable is assigned json data
+	data = loadJSON('population.json'); // data variable is assigned json data
 }
 // setup code
 function setup(){
-console.log(data[1].Date.Year); // prints out on console the year from the date in the first data array
+console.log(data.countrydata[0].males); // prints out on console the year from the date in the first data array
 }
-
