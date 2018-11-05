@@ -3,12 +3,15 @@
 ** November 1, 2018
 */
 
+// global variables
+var data;
+var barHeight;
+// function preload that loads json file
+function preload(){
+	data = loadJSON('weather.json'); // data variable is assigned json data
+}
+// setup code
 function setup(){
-var cnv = createCanvas(800, 800);
-cnv.position((windowWidth-width)/2, 30);
-background(0, 0, 0);
+console.log(data[1].Date.Year); // prints out on console the year from the date in the first data array
 }
 
-function draw(){
-background(0, 0, 0);
-}
