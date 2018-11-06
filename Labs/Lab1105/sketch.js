@@ -6,26 +6,43 @@
 // global variables
 var data;
 var barHeight;
+var males = [];
+var x = 0;
+y = 0;
 // setup code
 function setup(){
-loadJSON("population.json", gotData); // data variable is assigned json data
+	loadJSON("population.json", gotData); // data variable is assigned json data
 }
 function gotData(jData){
 	data = jData;
-	console.log(data.countrydata[0].males); // prints out on console the year from the date in the first data array
 }
 function draw(){
-	for (var i = data.countrydata.length-1; i >= 1; i--){
-	  	/* for loop that checks if the value in the array is in order
-		** and swaps them if they are not */
-    for (var j = 0; j < data.countrydata.length; j++){
-			if(data.countrydata[j].males > data.countrydata[j+1].males){
-				swap(data.countrydata, j, j+1);
+	if (data){
+		if (y < 1){
+			for (var i = 0; i < data.countrydata.length; i++){
+				males[i] = data.countrydata[i].males
+			}
+			y = y+1;
+		}
+		for (var i = males.length-1; i >= 1; i--){
+			for (var j = 0; j < males.length; j++){
+				if (males[j] > males[j+1]){
+					swap(males, j, j+1)
+				}
+			}
+		}
+			if (x < males.length){
+				for (var i = 0; i < 9; i++){
+					console.log(males[i])
+					x = x+1;
+				}
+			}
+		}
 	}
-}
-function swap(data.countrydata, a, b){
-	var old; // variable holding old value of txt2[a]
-	old = data.countrydata[a];
-	data.countrydata[a] = data.countrydata[b]; // makes txt2[a] equal to txt2[b]
-	data.countrydata[b] = old; // makes txt2[b] equal to variable old, which is the old value of txt2[a]
-}
+
+	function swap(males, a, b){
+		var old; // variable holding old value of txt2[a]
+		old = males[a];
+		males[a] = males[b]; // makes txt2[a] equal to txt2[b]
+		males[b] = old; // makes txt2[b] equal to variable old, which is the old value of txt2[a]
+	}
