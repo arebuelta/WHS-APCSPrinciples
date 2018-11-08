@@ -31,12 +31,14 @@ function draw(){
 				}
 			}
 		}
+		// can remove
 			if (x < males.length){
-				for (var i = 0; i < 9; i++){
+				for (var i = 0; i < males.length; i++){
 					console.log(males[i])
-					x = x+1;
+					x = x+males.length;
 				}
 			}
+		// can remove
 		}
 	}
 
@@ -45,4 +47,10 @@ function draw(){
 		old = males[a];
 		males[a] = males[b]; // makes txt2[a] equal to txt2[b]
 		males[b] = old; // makes txt2[b] equal to variable old, which is the old value of txt2[a]
+	}
+
+	function match(){
+		for (var i = 0; i > data.countrydata.length; i++){
+
+		}
 	}
