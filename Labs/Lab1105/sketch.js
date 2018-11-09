@@ -11,22 +11,27 @@ var x = 0;
 y = 0;
 // setup code
 function setup(){
+	var cnv = createCanvas(800, 800);
+	cnv.position((windowWidth-width)/2, 30);
+	background(20, 20, 20);
 	loadJSON("population.json", gotData); // data variable is assigned json data
 }
 function gotData(jData){
 	data = jData;
 }
 function draw(){
+	fill (255, 255, 255)
+	background(20, 20, 20);
 	if (data){
 		if (y < 1){
 			for (var i = 0; i < data.countrydata.length; i++){
-				males[i] = data.countrydata[i].males
+				males[i] = data.countrydata[i]
 			}
 			y = y+1;
 		}
 		for (var i = males.length-1; i >= 1; i--){
-			for (var j = 0; j < males.length; j++){
-				if (males[j] > males[j+1]){
+			for (var j = 0; j < males.length-1; j++){
+				if (males[j].males > males[j+1].males){
 					swap(males, j, j+1)
 				}
 			}
