@@ -21,6 +21,7 @@ function draw(){
   background (20, 20, 20);
   snake.run();
   food[0].run();
+  var dist = snake.dist(food[0]);
 }
 
 function keyPressed(){
