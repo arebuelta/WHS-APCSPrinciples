@@ -6,6 +6,8 @@ function Snake(loc, vel){
 
   this.run = function (){
     this.update();
+    this.grow();
+    this.tangled();
     this.render();
   }
   this.update = function(){
@@ -13,6 +15,12 @@ function Snake(loc, vel){
     this.loc.x = constrain(this.loc.x, 0, width-w);
     this.loc.y = constrain(this.loc.y, 0, height-w);
     // add segments on to snake
+  }
+  this.grow = function(){
+
+  }
+  this.tangled = function(){
+
   }
   this.render = function(){
     fill (0, 255, 0);

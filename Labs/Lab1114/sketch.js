@@ -7,16 +7,20 @@
 // global variables
 var w = 20;
 var snake;
+var food = [];
 
 function setup(){
   cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background (20, 20, 20);
   snake = new Snake(createVector(400, 400), createVector(1, 0))
+  food.push(new Food(createVector(random(800), random(800))));
+
 }
 function draw(){
   background (20, 20, 20);
   snake.run();
+  food[0].run();
 }
 
 function keyPressed(){
