@@ -8,6 +8,7 @@
 var w = 20;
 var snake;
 var food = [];
+var foodEaten = 0;
 
 function setup(){
   cnv = createCanvas(800, 800);
@@ -21,7 +22,12 @@ function draw(){
   background (20, 20, 20);
   snake.run();
   food[0].run();
-  var dist = snake.dist(food[0]);
+  var D = snake.loc.dist(food[0].loc);
+  if (D < 20){
+    food.splice(0, 1);
+    food.push(new Food(createVector(random(800), random(800))));
+    foodEaten = foodEaten+1;
+  }
 }
 
 function keyPressed(){

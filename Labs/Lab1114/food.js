@@ -2,11 +2,7 @@ function Food(loc){
   this.loc = loc;
 
   this.run = function (){
-    this.update();
     this.render();
-  }
-  this.update = function (){
-
   }
   this.render = function(){
     fill (255, 0, 0);

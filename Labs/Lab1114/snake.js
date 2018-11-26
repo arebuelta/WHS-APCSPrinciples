@@ -17,7 +17,30 @@ function Snake(loc, vel){
     // add segments on to snake
   }
   this.grow = function(){
-
+    if (foodEaten > 0){
+      var v1; // x variable used to determine location of segments based on velocity of snake
+      var v2;
+      for (var i = 0; i < foodEaten; i++){
+      if (this.vel.x === 1 && this.vel.y === 0){
+        v1 = -20*(i+1);
+        v2 = 0;
+      }
+      else if (this.vel.x === -1 && this.vel.y === 0){
+        v1 = 20*(i+1);
+        v2 = 0;
+      }
+      else if (this.vel.x === 0 && this.vel.y === -1){
+        v1 = 0;
+        v2 = 20*(i+1);
+      }
+      else {
+        v1 = 0;
+        v2 = -20*(i+1);
+      }
+      fill (0, 255, 0);
+      this.segments[i] = rect(this.loc.x+v1, this.loc.y+v2, w, w);
+      }
+    }
   }
   this.tangled = function(){
 
