@@ -21,21 +21,29 @@ function Snake(loc, vel){
       var v1; // x variable used to determine location of segments based on velocity of snake
       var v2;
       for (var i = 0; i < foodEaten; i++){
-      if (this.vel.x === 1 && this.vel.y === 0){
-        v1 = -20*(i+1);
+      if (this.vel.x === 2 && this.vel.y === 0){
+        v1 = -w*(i+1);
+        v2 = 0;
+        if(keyCode === UP_ARROW){
+          var temp = this.loc.y;
+          console.log(temp);
+          while (w > this.loc.y-temp){
+            v1 = -w*(i+1);
+            v2 = 0;
+          }
+        }
+      }
+      else if (this.vel.x === -2 && this.vel.y === 0){
+        v1 = w*(i+1);
         v2 = 0;
       }
-      else if (this.vel.x === -1 && this.vel.y === 0){
-        v1 = 20*(i+1);
-        v2 = 0;
-      }
-      else if (this.vel.x === 0 && this.vel.y === -1){
+      else if (this.vel.x === 0 && this.vel.y === -2){
         v1 = 0;
-        v2 = 20*(i+1);
+        v2 = w*(i+1);
       }
       else {
         v1 = 0;
-        v2 = -20*(i+1);
+        v2 = -w*(i+1);
       }
       fill (0, 255, 0);
       this.segments[i] = rect(this.loc.x+v1, this.loc.y+v2, w, w);
