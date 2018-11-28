@@ -31,8 +31,14 @@ function setup(){
 // draw function that runs objects
 function draw(){
   background (20, 20, 20);
-  snake.run();
+  if (snake.gameEnd === "true"){
+  textSize(50);
+  fill(255);
+  text("Game Over", 200, 400);
+  }
+  else {
   food[0].run();
+  snake.run();
   var D = snake.loc.dist(food[0].loc); // calculates the distance between the snake and food
   // if distance is less than the size of the food, the food is spliced and a new food object is created with a random location
   if (D < w){
@@ -40,7 +46,12 @@ function draw(){
     food.push(new Food(createVector(floor(random(cols)), floor(random(rows)))));
 	food[0].loc.mult(w);
     foodEaten = foodEaten+1; // adds food eaten
+    }
   }
+  textSize(30);
+  fill(255);
+  text("Score: ", 40, 60);
+  text(foodEaten, 140, 60);
 }
 // keyPressed function that changes the velocity of the snake based on what arrow key was pressed
 function keyPressed(){
