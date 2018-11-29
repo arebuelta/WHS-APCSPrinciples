@@ -32,9 +32,9 @@ function setup(){
 function draw(){
   background (20, 20, 20);
   if (snake.gameEnd === "true"){
-  textSize(50);
-  fill(255);
-  text("Game Over", 200, 400);
+    textSize(50);
+    fill(255);
+    text("Game Over", 275, 400);
   }
   else {
   food[0].run();
