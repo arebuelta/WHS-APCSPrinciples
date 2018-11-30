@@ -12,6 +12,8 @@ var foodEaten = 0; // variable holding the number of times the food is eaten
 var cols; // variable holding the value of the columns
 var rows; // variable holding the value of the rows
 var s = 800; // size of canvas
+var button;
+var gameStart = 0;
 
 // setup function
 function setup(){
@@ -26,33 +28,18 @@ function setup(){
   // creates food object into an array of only one object
   food.push(new Food(createVector(floor(random(cols)), floor(random(rows)))));
   food[0].loc.mult(w); // multiplies location with w to accurately locate it in a row and column
-
 }
 // draw function that runs objects
 function draw(){
   background (20, 20, 20);
-  if (snake.gameEnd === "true"){
-    textSize(50);
-    fill(255);
-    text("Game Over", 275, 400);
+  if (gameStart === "true"){
+    game();
   }
   else {
-  food[0].run();
-  snake.run();
-  var D = snake.loc.dist(food[0].loc); // calculates the distance between the snake and food
-  // if distance is less than the size of the food, the food is spliced and a new food object is created with a random location
-  if (D < w){
-    food.splice(0, 1);
-    food.push(new Food(createVector(floor(random(cols)), floor(random(rows)))));
-	food[0].loc.mult(w);
-    foodEaten = foodEaten+1; // adds food eaten
+    openingScreen();
+    mousePressed();
     }
   }
-  textSize(30);
-  fill(255);
-  text("Score: ", 40, 60);
-  text(foodEaten, 140, 60);
-}
 // keyPressed function that changes the velocity of the snake based on what arrow key was pressed
 function keyPressed(){
   if(keyCode === UP_ARROW){
@@ -66,5 +53,46 @@ function keyPressed(){
   }
   if(keyCode === RIGHT_ARROW){
     snake.vel = createVector(1, 0);
+  }
+}
+
+function openingScreen(){
+  textSize(75);
+  fill(255);
+  text("Snake Game", 200, 250);
+  fill (255);
+  button = rect(325, 350, 175, 60);
+}
+
+function game(){
+  if (snake.gameEnd === "true"){
+    textSize(50);
+    fill(255);
+    text("Game Over", 275, 400);
+  }
+  else {
+  food[0].run();
+  snake.run();
+  var D = snake.loc.dist(food[0].loc); // calculates the distance between the snake and food
+  // if distance is less than the size of the food, the food is spliced and a new food object is created with a random location
+  if (D < w){
+    food.splice(0, 1);
+    food.push(new Food(createVector(floor(random(cols)), floor(random(rows)))));
+  food[0].loc.mult(w);
+    foodEaten = foodEaten+1; // adds food eaten
+    }
+  }
+  textSize(30);
+  fill(255);
+  text("Score: ", 40, 60);
+  text(foodEaten, 140, 60);
+}
+
+function mousePressed(){
+  if (gameStart === 0){
+    gameStart = "true";
+  }
+  else {
+    gameStart = 0;
   }
 }

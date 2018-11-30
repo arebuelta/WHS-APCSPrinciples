@@ -35,7 +35,6 @@ function Snake(loc, vel){
   this.endGame = function(){
     for (var i = 0; i < this.segments.length; i++){
       if (this.loc.x === this.segments[i].x && this.loc.y === this.segments[i].y){
-        console.log("end");
         this.gameEnd = "true";
       }
     }
