@@ -14,6 +14,8 @@ var rows; // variable holding the value of the rows
 var s = 800; // size of canvas
 var button;
 var gameStart = 0;
+var locked = false;
+var overBox = false;
 
 // setup function
 function setup(){
@@ -32,12 +34,19 @@ function setup(){
 // draw function that runs objects
 function draw(){
   background (20, 20, 20);
-  if (gameStart === "true"){
+  if (locked === true){
     game();
+    overBox = false;
   }
   else {
     openingScreen();
-    mousePressed();
+    if (mouseX > 325 && mouseX < 325+175 &&
+      mouseY > 350 && mouseY < 350+75) {
+    overBox = true;
+    }
+    else {
+    overBox = false;
+      }
     }
   }
 // keyPressed function that changes the velocity of the snake based on what arrow key was pressed
@@ -61,7 +70,10 @@ function openingScreen(){
   fill(255);
   text("Snake Game", 200, 250);
   fill (255);
-  button = rect(325, 350, 175, 60);
+  rect(325, 350, 175, 75);
+  fill (0);
+  textSize(40);
+  text("Play", 370, 400);
 }
 
 function game(){
@@ -69,6 +81,11 @@ function game(){
     textSize(50);
     fill(255);
     text("Game Over", 275, 400);
+    fill(255);
+    rect(320, 450, 175, 60);
+    textSize(30);
+    fill(0);
+    text("Play Again", 340, 490);
   }
   else {
   food[0].run();
@@ -89,10 +106,9 @@ function game(){
 }
 
 function mousePressed(){
-  if (gameStart === 0){
-    gameStart = "true";
-  }
-  else {
-    gameStart = 0;
+  if(overBox) {
+    locked = true;
+  } else {
+    locked = false;
   }
 }
