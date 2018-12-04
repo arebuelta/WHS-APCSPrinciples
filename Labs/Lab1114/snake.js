@@ -9,7 +9,7 @@ function Snake(loc, vel){
   this.loc = loc;
   this.vel = vel;
   this.segments = []; // array of the snake's segments
-  this.gameEnd;
+  this.gameEnd = false;
   // This function calls other functions
   this.run = function (){
     this.update();
@@ -35,7 +35,7 @@ function Snake(loc, vel){
   this.endGame = function(){
     for (var i = 0; i < this.segments.length; i++){
       if (this.loc.x === this.segments[i].x && this.loc.y === this.segments[i].y){
-        this.gameEnd = "true";
+        this.gameEnd = true;
       }
     }
   }

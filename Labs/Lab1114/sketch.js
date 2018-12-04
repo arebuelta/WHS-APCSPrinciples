@@ -34,11 +34,10 @@ function setup(){
 // draw function that runs objects
 function draw(){
   background (20, 20, 20);
-  if (locked === true){
+  if (locked === true && snake.gameEnd === false){
     game();
-    overBox = false;
   }
-  else {
+  else if (locked === false && snake.gameEnd === false){
     openingScreen();
     if (mouseX > 325 && mouseX < 325+175 &&
       mouseY > 350 && mouseY < 350+75) {
@@ -47,6 +46,18 @@ function draw(){
     else {
     overBox = false;
       }
+    }
+    else if (locked === false && snake.gameEnd === true){
+      if (mouseX > 325 && mouseX < 325+175 &&
+        mouseY > 350 && mouseY < 350+75) {
+      overBox = true;
+      }
+      else {
+      overBox = false;
+        }
+      }
+    else if (locked === true && snake.gameEnd === true){
+      game();
     }
   }
 // keyPressed function that changes the velocity of the snake based on what arrow key was pressed
@@ -77,7 +88,7 @@ function openingScreen(){
 }
 
 function game(){
-  if (snake.gameEnd === "true"){
+  if (snake.gameEnd === true){
     textSize(50);
     fill(255);
     text("Game Over", 275, 400);
@@ -86,6 +97,8 @@ function game(){
     textSize(30);
     fill(0);
     text("Play Again", 340, 490);
+    overBox = false;
+
   }
   else {
   food[0].run();
