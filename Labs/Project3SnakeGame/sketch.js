@@ -40,31 +40,31 @@ function draw(){
   else if (locked === false && snake.gameEnd === false){
     openingScreen();
     if (mouseX > 325 && mouseX < 325+175 &&
-    mouseY > 350 && mouseY < 350+75) {
+      mouseY > 350 && mouseY < 350+75) {
     overBox = true;
     }
     else {
     overBox = false;
+      }
     }
-  }
-  else if (locked === false && snake.gameEnd === true){
-    gameOverScreen();
-    if (mouseX > 320 && mouseX < 320+175 &&
-      mouseY > 450 && mouseY < 450+60) {
+    else if (locked === false && snake.gameEnd === true){
+      gameOverScreen();
+      if (mouseX > 320 && mouseX < 320+175 &&
+        mouseY > 450 && mouseY < 450+60) {
       overBox = true;
-    }
-    else {
+      }
+      else {
       overBox = false;
+        }
+      }
+    else if (locked === true && snake.gameEnd === true){
+      snake = 0;
+      food = [];
+      setup();
+      foodEaten = 0;
+      snake.gameEnd = false;
     }
   }
-  else if (locked === true && snake.gameEnd === true){
-    snake = 0;
-    food = [];
-    setup();
-    foodEaten = 0;
-    snake.gameEnd = false;
-  }
-}
 // keyPressed function that changes the velocity of the snake based on what arrow key was pressed
 function keyPressed(){
   if(keyCode === UP_ARROW){
@@ -80,7 +80,7 @@ function keyPressed(){
     snake.vel = createVector(1, 0);
   }
 }
-// openingScreen function that displays the splash screen with button to start game
+
 function openingScreen(){
   textSize(75);
   fill(255);
@@ -91,7 +91,6 @@ function openingScreen(){
   textSize(40);
   text("Play", 370, 400);
 }
-// gameOverScreen function that displays splash screen when the game is over along with a Play Again button
 function gameOverScreen(){
   textSize(50);
   fill(255);
@@ -102,7 +101,6 @@ function gameOverScreen(){
   fill(0);
   text("Play Again", 340, 490);
 }
-// game function
 function game(){
   food[0].run();
   snake.run();
