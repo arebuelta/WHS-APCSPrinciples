@@ -1,7 +1,7 @@
 /*
 ** Anthony Rebuelta
 ** Snake Constructor Function
-** 17 December 2018
+** 14 December 2018
 */
 
 function Snake(loc, vel){
@@ -34,13 +34,12 @@ function Snake(loc, vel){
 	  // for loop that checks if the snake head collides with any segment and if so ends the game
     for (var i = 0; i < this.segments.length; i++){
       if (this.loc.x === this.segments[i].x && this.loc.y === this.segments[i].y){
-		bite.play();
         this.gameEnd = true;
         locked = false;
 	  }
 	}
 	// if statements that check if the snake hit the wall and if so ends the game
-	if (this.loc.x > s-w){
+	if (this.loc.x > s){
 		this.gameEnd = true;
 		locked = false;
 	  }
@@ -48,7 +47,7 @@ function Snake(loc, vel){
 		this.gameEnd = true;
 		locked = false; 
 	  }
-	else if (this.loc.y > s-w){
+	else if (this.loc.y > s){
 		this.gameEnd = true;
 		locked = false;
 	  }

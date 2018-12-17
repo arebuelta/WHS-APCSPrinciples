@@ -1,7 +1,7 @@
 /*
 ** Anthony Rebuelta
 ** Lab1114: Snake Game
-** 17 December 2018
+** 14 December 2018
 */
 
 // global variables
@@ -14,30 +14,24 @@ var rows; // variable holding the value of the rows
 var s = 800; // size of canvas
 var locked = false; // variable used to determine if play button is pressed
 var overBox = false; // variable used to determine if mouse is over play button
-var background; // variable holding background
-var apple; // variable holding apple image
-var bite; // variable holding bite sound effect
-var challenge = 1; // variable holding speed of game;
 
 // setup function
 function setup(){
   cnv = createCanvas(s, s);
   cnv.position((windowWidth-width)/2, 30);
-  background = loadImage("assets/dirt.jpg"); // Loads dirt background image
+  background (20, 20, 20);
+  frameRate (10);
   // creates snake object
   snake = new Snake(createVector(400, 400), createVector(1, 0))
-  frameRate(10*challenge);
   cols = floor(s/w); // defines columns variable
   rows = floor(s/w); // defines rows variable
   // creates food object into an array of only one object
   createFood();
   food[0].loc.mult(w); // multiplies location with w to accurately locate it in a row and column
-  apple = loadImage("assets/apple.jpg"); // Loads apple image
-  bite = loadSound("assets/bite.mp3"); // Loads bite sound effect
 }
 // draw function that runs objects
 function draw(){
-  image(background, 0, 0);
+  background (20, 20, 20);
   // calls game function if play button was pressed and game end variable is set to false 
   if (locked === true && snake.gameEnd === false){
     game();
@@ -59,12 +53,7 @@ function draw(){
       if (mouseX > 320 && mouseX < 320+175 &&
         mouseY > 450 && mouseY < 450+60) {
       overBox = true;
-	  challenge = 1; // sets challenge to one to play game in normal speed
       }
-	  else if (mouseX > 250 && mouseX < 250+320 && mouseY > 550 && mouseY < 550+60){
-		  overBox = true;
-		  challenge = 2; // sets challenge to two to play game in 2x speed
-	  }
       else {
       overBox = false;
         }
@@ -96,32 +85,24 @@ function keyPressed(){
 // openingScreen function that displays opening splash screen with play button
 function openingScreen(){
   textSize(75);
-  fill(0, 255, 0);
-  text("Snake", 200, 250);
   fill(255);
-  text("Game", 425, 250);
+  text("Snake Game", 200, 250);
   fill (255);
   rect(325, 350, 175, 75);
   fill (0);
   textSize(40);
   text("Play", 370, 400);
 }
-// gameOverScreen function that displays game over splash screen with play again button with a challenge mode option
+// gameOverScreen function that displays game over splash screen with play again button
 function gameOverScreen(){
   textSize(50);
-  fill(0, 255, 0);
-  text("Game", 275, 400);
   fill(255);
-  text("Over", 425, 400);
+  text("Game Over", 275, 400);
   fill(255);
   rect(320, 450, 175, 60);
   textSize(30);
   fill(0);
   text("Play Again", 340, 490);
-  fill(255, 0, 0);
-  rect(250, 550, 320, 60);
-  fill(0);
-  text("Play Challenge Mode", 270, 590);
 }
 // game function that runs game
 function game(){
@@ -131,7 +112,6 @@ function game(){
   // if distance is less than the size of the food, the food is spliced and a new food object is created with a random location
   if (D < w){
     food.splice(0, 1);
-	bite.play();
     createFood();
   food[0].loc.mult(w);
     foodEaten = foodEaten+1; // adds food eaten

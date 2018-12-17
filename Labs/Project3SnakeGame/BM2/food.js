@@ -1,7 +1,7 @@
 /*
 ** Anthony Rebuelta
 ** Food Constructor Function
-** 17 December 2018
+** 14 December 2018
 */
 
 function Food(loc){
@@ -14,6 +14,6 @@ function Food(loc){
   // render() draws the food at the new location
   this.render = function(){
     fill (255, 0, 0);
-	image(apple, this.loc.x, this.loc.y, w, w);
+    rect(this.loc.x, this.loc.y, w, w);
   }
 }
